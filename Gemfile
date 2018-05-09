@@ -9,7 +9,7 @@ ruby "2.5.1"
 # Added at 2018-05-09 14:20:11 +0100 by pete:
 gem "sinatra", "~> 2.0", require: 'sinatra/base'
 gem "gibbon"
-gem "puma"
+gem "iodine"
 
 group :development, :test do
   gem "dotenv"

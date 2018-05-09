@@ -7,10 +7,11 @@ GEM
     gibbon (3.2.0)
       faraday (>= 0.9.1)
       multi_json (>= 1.11.0)
+    iodine (0.5.1)
+      rack (>= 1.0, < 3.0)
     multi_json (1.13.1)
     multipart-post (2.0.0)
     mustermann (1.0.2)
-    puma (3.11.4)
     rack (2.0.5)
     rack-protection (2.0.1)
       rack
@@ -29,7 +30,7 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   gibbon
-  puma
+  iodine
   shotgun
   sinatra (~> 2.0)
 
