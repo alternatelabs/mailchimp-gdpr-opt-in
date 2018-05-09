@@ -20,8 +20,7 @@ class App < Sinatra::Base
     timestamp = Time.now.strftime("%m/%d/%Y")
 
     puts "#{email} consenting #{timestamp}"
-
-    p gibbon.lists(list_id).members(hexmail).upsert(body: {email_address: email, status: "subscribed", merge_fields: {WEB_GDPR: timestamp}})
+    gibbon.lists(list_id).members(hexmail).upsert(body: {email_address: email, status: "subscribed", merge_fields: {WEB_GDPR: timestamp}})
   rescue Gibbon::MailChimpError => e
     puts "Houston, we have a problem: #{e.message} - #{e.raw_body}"
   ensure
