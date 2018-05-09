@@ -12,7 +12,7 @@ Dotenv.load if %w[development test].include? ENV["APP_ENV"]
 
 class App < Sinatra::Base
   get "/consent" do
-    email = params["email"]
+    email = String(params["email"]).gsub(/\s+/, "+")
     hexmail = Digest::MD5.hexdigest(email)
     list_id = ENV.fetch("MAILCHIMP_LIST_ID")
     api_key = ENV.fetch("MAILCHIMP_API_KEY")
