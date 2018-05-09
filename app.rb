@@ -19,16 +19,12 @@ class App < Sinatra::Base
     gibbon = Gibbon::Request.new(api_key: api_key)
     timestamp = Time.now.strftime("%m/%d/%Y")
 
-    log.info "#{email} consenting #{timestamp}"
+    puts "#{email} consenting #{timestamp}"
 
-    log.debug gibbon.lists(list_id).members(hexmail).upsert(body: {email_address: email, status: "subscribed", merge_fields: {WEB_GDPR: timestamp}})
+    p gibbon.lists(list_id).members(hexmail).upsert(body: {email_address: email, status: "subscribed", merge_fields: {WEB_GDPR: timestamp}})
   rescue Gibbon::MailChimpError => e
-    log.error "Houston, we have a problem: #{e.message} - #{e.raw_body}"
+    puts "Houston, we have a problem: #{e.message} - #{e.raw_body}"
   ensure
     redirect "https://envoyofbelfast.com/pages/thankyou"
-  end
-
-  def log
-    Logger.new(STDOUT)
   end
 end
