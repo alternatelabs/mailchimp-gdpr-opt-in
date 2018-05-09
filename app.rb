@@ -11,6 +11,8 @@ Bundler.require :default, ENV["APP_ENV"].to_sym
 Dotenv.load if %w[development test].include? ENV["APP_ENV"]
 
 class App < Sinatra::Base
+  set :logger, Logger.new(STDOUT)
+
   get "/consent" do
     email = params["email"]
     hexmail = Digest::MD5.hexdigest(email)
@@ -19,11 +21,11 @@ class App < Sinatra::Base
     gibbon = Gibbon::Request.new(api_key: api_key)
     timestamp = Time.now.strftime("%m/%d/%Y")
 
-    puts "#{email} consenting #{timestamp}"
+    logger.info "#{email} consenting #{timestamp}"
 
-    p gibbon.lists(list_id).members(hexmail).upsert(body: {email_address: email, status: "subscribed", merge_fields: {WEB_GDPR: timestamp}})
+    logger.debug gibbon.lists(list_id).members(hexmail).upsert(body: {email_address: email, status: "subscribed", merge_fields: {WEB_GDPR: timestamp}})
   rescue Gibbon::MailChimpError => e
-    puts "Houston, we have a problem: #{e.message} - #{e.raw_body}"
+    logger.error "Houston, we have a problem: #{e.message} - #{e.raw_body}"
   ensure
     redirect "https://envoyofbelfast.com/pages/thankyou"
   end
