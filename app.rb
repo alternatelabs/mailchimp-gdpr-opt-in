@@ -16,12 +16,16 @@ class App < Sinatra::Base
     hexmail = Digest::MD5.hexdigest(email)
     list_id = ENV.fetch("MAILCHIMP_LIST_ID")
     api_key = ENV.fetch("MAILCHIMP_API_KEY")
-    mc = Mailchimp::API.new(api_key)
+    gibbon = Gibbon::Request.new(api_key: api_key)
+    timestamp = Time.now.strftime("%m/%d/%Y")
 
-    member_info = mc.lists.member_info(list_id, [hexmail])
-    p member_info
+    puts "#{email} consenting #{timestamp}"
+
+    p gibbon.lists(list_id).members(hexmail).upsert(body: {email_address: email, status: "subscribed", merge_fields: {WEB_GDPR: timestamp}})
 
     "Success"
-  rescue Mailchimp::Error => e
+  rescue Gibbon::MailChimpError => e
+    puts "Houston, we have a problem: #{e.message} - #{e.raw_body}"
+    "Error"
   end
 end
