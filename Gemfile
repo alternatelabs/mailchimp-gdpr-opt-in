@@ -13,4 +13,5 @@ gem "iodine"
 
 group :development, :test do
   gem "dotenv"
+  gem "shotgun"
 end
