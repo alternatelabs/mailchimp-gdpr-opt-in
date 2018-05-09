@@ -1,1 +1,1 @@
-web: rackup -s iodine -p $PORT
+web: rackup -s puma -p $PORT
