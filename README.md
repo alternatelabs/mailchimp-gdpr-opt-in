@@ -12,7 +12,7 @@ In your list go to Settings -> `List fields and *|MERGE|* tags`
 
 Create a Date merge tag called `Website GDPR consent` and update the merge tag name to `WEB_GDPR`.
 
-### Create your mailchimp campaign
+### Create your Mailchimp campaign
 
 Create a new campaign to send out to existing subscribers and insert a button linking to the following URL (replacing `my-gdpr-consent-app` with the actual name of your heroku app).
 

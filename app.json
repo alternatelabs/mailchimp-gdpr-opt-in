@@ -23,7 +23,7 @@
     "APP_ENV": {
       "description": "Set the web server environment, setting this to anything other than production may have security consequences!",
       "value": "production"
-    },
+    }
   },
   "keywords": ["ruby", "sinatra", "mailchimp", "gdpr"]
 }
