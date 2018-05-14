@@ -9,13 +9,16 @@
   ],
   "env": {
     "MAILCHIMP_LIST_ID": {
-      "description": "Mailchimp list ID (you can find this in your list settings -> list name & defaults)"
+      "description": "Mailchimp list ID (you can find this in your list settings -> list name & defaults)",
+      "required": true
     },
     "MAILCHIMP_API_KEY": {
-      "description": "Mailchimp API key (you can find this under account settings -> extra -> API keys)"
+      "description": "Mailchimp API key (you can find this under account settings -> extra -> API keys)",
+      "required": true
     },
     "THANKS_URL": {
-      "description": "Fully qualified URL to your thank you page – all users will be redirected here after confirmation."
+      "description": "Fully qualified URL to your thank you page – all users will be redirected here after confirmation.",
+      "required": true
     },
     "APP_ENV": {
       "description": "Set the web server environment, setting this to anything other than production may have security consequences!",
