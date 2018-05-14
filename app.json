@@ -1,0 +1,26 @@
+{
+  "name": "Mailchimp GDPR opt-in",
+  "description": "A sinatra microservice to enable new opt-ins in light of GDPR.",
+  "repository": "https://github.com/alternatelabs/mailchimp-gdpr-opt-in",
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "env": {
+    "MAILCHIMP_LIST_ID": {
+      "description": "Mailchimp list ID (you can find this in your list settings -> list name & defaults)"
+    },
+    "MAILCHIMP_API_KEY": {
+      "description": "Mailchimp API key (you can find this under account settings -> extra -> API keys)"
+    },
+    "THANKS_URL": {
+      "description": "Fully qualified URL to your thank you page – all users will be redirected here after confirmation."
+    },
+    "APP_ENV": {
+      "description": "Set the web server environment, setting this to anything other than production may have security consequences!",
+      "value": "production"
+    },
+  },
+  "keywords": ["ruby", "sinatra", "mailchimp", "gdpr"]
+}
