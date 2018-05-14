@@ -24,6 +24,6 @@ class App < Sinatra::Base
   rescue Gibbon::MailChimpError => e
     puts "Houston, we have a problem: #{e.message} - #{e.raw_body}"
   ensure
-    redirect "https://envoyofbelfast.com/pages/thankyou"
+    redirect ENV.fetch("THANKS_URL")
   end
 end
